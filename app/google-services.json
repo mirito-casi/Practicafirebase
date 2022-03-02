@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "799186653976",
+    "firebase_url": "https://empalmes-d3966.firebaseio.com",
+    "project_id": "empalmes-d3966",
+    "storage_bucket": "empalmes-d3966.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799186653976:android:94af72e5993141e29b846d",
+        "android_client_info": {
+          "package_name": "casmag.com.pruebafirestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799186653976-cvbadhetlnlhd8pravvo0hbjn40phfat.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7En2U0Ac0sXy5nJAYslsocIkS98ZwZs4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799186653976-cvbadhetlnlhd8pravvo0hbjn40phfat.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799186653976:android:b3ebd8cc4f97c9729b846d",
+        "android_client_info": {
+          "package_name": "com.example.cajasempalmes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799186653976-cvbadhetlnlhd8pravvo0hbjn40phfat.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7En2U0Ac0sXy5nJAYslsocIkS98ZwZs4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799186653976-cvbadhetlnlhd8pravvo0hbjn40phfat.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799186653976:android:09f7c8e18edc2c739b846d",
+        "android_client_info": {
+          "package_name": "com.example.todofiberoptic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799186653976-cvbadhetlnlhd8pravvo0hbjn40phfat.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7En2U0Ac0sXy5nJAYslsocIkS98ZwZs4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799186653976-cvbadhetlnlhd8pravvo0hbjn40phfat.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

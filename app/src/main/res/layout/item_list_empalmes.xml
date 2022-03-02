@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/layout_p"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/layout_p"
+        android:background="@drawable/gradiente_rcv"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="147dp"
+            android:layout_height="151dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/logosts" />
+
+        <TextView
+            android:id="@+id/txtnombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivLogo"
+            app:layout_constraintTop_toTopOf="@+id/ivLogo" />
+
+        <TextView
+            android:id="@+id/txttramo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tramo"
+            app:layout_constraintBottom_toTopOf="@+id/txtdistancia"
+            app:layout_constraintEnd_toEndOf="@+id/txtnombre"
+            app:layout_constraintStart_toStartOf="@+id/txtnombre"
+            app:layout_constraintTop_toBottomOf="@+id/txtnombre" />
+
+        <TextView
+            android:id="@+id/txtdistancia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="distancia"
+            app:layout_constraintBottom_toTopOf="@+id/txtnumposte"
+            app:layout_constraintEnd_toEndOf="@+id/txttramo"
+            app:layout_constraintStart_toStartOf="@+id/txttramo"
+            app:layout_constraintTop_toBottomOf="@+id/txttramo" />
+
+        <TextView
+            android:id="@+id/txtnumposte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numero de poste"
+            app:layout_constraintBottom_toBottomOf="@+id/ivLogo"
+            app:layout_constraintEnd_toEndOf="@+id/txtdistancia"
+            app:layout_constraintStart_toStartOf="@+id/txtdistancia" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
