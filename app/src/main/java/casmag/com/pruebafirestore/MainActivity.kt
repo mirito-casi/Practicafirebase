@@ -23,12 +23,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapterEmpal: AdapterEmpalme
     private lateinit var empalAdapter: EmpalmeAdapter
     val db = Firebase.firestore
-
+    val empalRef = db.collection("Empalme")
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        consultasSimples()
 
         guardar()
         //llenarRecyclerView()
@@ -48,7 +50,6 @@ class MainActivity : AppCompatActivity() {
         }
         binding.rcvEmpalme.adapter = empalAdapter
         evenChangeListener()
-
     }
 
     private fun onItenSelectec(empalme: Empalme) {
@@ -58,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         binding.edtposte.setText(empalme.nun_poste)
         //Toast.makeText(this,empalme.nombre,Toast.LENGTH_SHORT).show()
         changeFormRegistro()
+
     }
 
     private fun llenarRecyclerView() {
@@ -67,10 +69,13 @@ class MainActivity : AppCompatActivity() {
         empalArrayList = arrayListOf()
         adapterEmpal = AdapterEmpalme(empalArrayList)
         binding.rcvEmpalme.adapter = adapterEmpal
-        evenChangeListener()
+        // evenChangeListener()
+
+
     }
 
     private fun evenChangeListener() {
+
         db.collection("Empalme")
             .addSnapshotListener(object : EventListener<QuerySnapshot> {
                 override fun onEvent(
@@ -106,6 +111,7 @@ class MainActivity : AppCompatActivity() {
                 binding.edtnombre.requestFocus()
             } else {
                 val empal = Empalme(nombre, tramo, distan, numposte)
+
                 // Add a new document with a generated ID
                 db.collection("Empalme")
                     .add(empal)
@@ -120,8 +126,27 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this, "Error al registro $e", Toast.LENGTH_SHORT).show()
                     }
             }
-
         }
+    }
+    private fun updateEmpal(id_empalme:Empalme){
+        val nombre = binding.edtnombre.text.toString().trim()
+        val tramo = binding.edtTramo.text.toString().trim()
+        val distan = binding.edtdistancia.text.toString().trim()
+        val numposte = binding.edtposte.text.toString().trim()
+        //actualizar datos
+    }
+    private fun consultasSimples() {
+
+        val empalmeRef = db.collection("Empalme")
+        val query = empalmeRef.whereEqualTo("nombre", "E#1")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (docuent in documents) {
+                    Log.d("Consultas", "${docuent.id}=> ${docuent.data}")
+                }
+            }.addOnFailureListener { exception ->
+                Log.w("Error_Consulta", "Error al obtener los datos: ", exception)
+            }
     }
 
     private fun limpiar() {
@@ -137,7 +162,7 @@ class MainActivity : AppCompatActivity() {
             binding.cvformuRegistro.visibility = View.VISIBLE
             binding.clpanelRcv.visibility = View.GONE
             binding.fabtnAdd.setImageResource(R.drawable.ic_reducir_24)
-        }else{
+        } else {
             binding.cvformuRegistro.visibility = View.GONE
             binding.clpanelRcv.visibility = View.VISIBLE
             binding.fabtnAdd.setImageResource(R.drawable.ic_baseline_add_24)
