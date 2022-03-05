@@ -22,22 +22,26 @@ class MainActivity : AppCompatActivity() {
     private lateinit var empalArrayList: ArrayList<Empalme>
     private lateinit var adapterEmpal: AdapterEmpalme
     private lateinit var empalAdapter: EmpalmeAdapter
+    //INICIALIZACION DE LA CONECCION A FIRESTORE
     val db = Firebase.firestore
     val empalRef = db.collection("Empalme")
+
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        consultasSimples()
-
         guardar()
         //llenarRecyclerView()
         initRecyclerView()
 
         binding.fabtnAdd.setOnClickListener {
             changeFormRegistro()
+            mostrarBtn(true)
+            limpiar()
+        }
+        binding.btnActualizar.setOnClickListener {
+
         }
     }
 
@@ -58,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         binding.edtdistancia.setText(empalme.distancia)
         binding.edtposte.setText(empalme.nun_poste)
         //Toast.makeText(this,empalme.nombre,Toast.LENGTH_SHORT).show()
+        mostrarBtn(false)
         changeFormRegistro()
 
     }
@@ -76,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun evenChangeListener() {
 
-        db.collection("Empalme")
+        empalRef
             .addSnapshotListener(object : EventListener<QuerySnapshot> {
                 override fun onEvent(
                     value: QuerySnapshot?,
@@ -107,7 +112,7 @@ class MainActivity : AppCompatActivity() {
             val distan = binding.edtdistancia.text.toString().trim()
             val numposte = binding.edtposte.text.toString().trim()
             if (nombre.isEmpty()) {
-                Toast.makeText(this, "Ingrese el nombre del empalme", Toast.LENGTH_SHORT).show()
+                binding.edtnombre.error = getString(R.string.nombre)
                 binding.edtnombre.requestFocus()
             } else {
                 val empal = Empalme(nombre, tramo, distan, numposte)
@@ -136,7 +141,6 @@ class MainActivity : AppCompatActivity() {
         //actualizar datos
     }
     private fun consultasSimples() {
-
         val empalmeRef = db.collection("Empalme")
         val query = empalmeRef.whereEqualTo("nombre", "E#1")
             .get()
@@ -158,6 +162,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeFormRegistro() {
+
         if (binding.cvformuRegistro.visibility == View.GONE) {
             binding.cvformuRegistro.visibility = View.VISIBLE
             binding.clpanelRcv.visibility = View.GONE
@@ -168,5 +173,15 @@ class MainActivity : AppCompatActivity() {
             binding.fabtnAdd.setImageResource(R.drawable.ic_baseline_add_24)
 
         }
+    }
+    private fun mostrarBtn(v:Boolean):Boolean{
+        if (v){
+            binding.btnguardar.visibility = View.VISIBLE
+            binding.btnActualizar.visibility = View.GONE
+        }else{
+            binding.btnguardar.visibility = View.GONE
+            binding.btnActualizar.visibility = View.VISIBLE
+        }
+        return v
     }
 }

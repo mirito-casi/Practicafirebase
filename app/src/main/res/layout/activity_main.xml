@@ -11,10 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:contentDescription="@string/app_name"
         android:clickable="true"
+        android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/clpanelRcv"
         app:srcCompat="@drawable/ic_baseline_add_24" />
 
@@ -112,23 +112,30 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnguardar"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
                 android:text="Guardar"
                 app:cornerRadius="@dimen/curva_boton"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/button"
+                android:id="@+id/btnActualizar"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/update_emp"
+                android:visibility="gone"
                 app:cornerRadius="@dimen/curva_boton"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -149,8 +156,10 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/item_list_empalmes" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

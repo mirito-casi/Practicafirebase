@@ -12,4 +12,5 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="update_emp">Actualizar</string>
+    <string name="nombre">Ingrese nombre del empalme</string>
 </resources>
