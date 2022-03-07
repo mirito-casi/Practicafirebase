@@ -27,6 +27,7 @@ class EmpalmeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         itemView.setOnClickListener{onClickListener(empalme)}
 
         }
+
         /*forma tradicional
        nombre.text = empalme.nombre
        tramo.text = empalme.tramo

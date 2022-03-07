@@ -2,8 +2,10 @@ package casmag.com.pruebafirestore
 
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import casmag.com.pruebafirestore.databinding.ActivityMainBinding
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var empalArrayList: ArrayList<Empalme>
     private lateinit var adapterEmpal: AdapterEmpalme
     private lateinit var empalAdapter: EmpalmeAdapter
+
     //INICIALIZACION DE LA CONECCION A FIRESTORE
     val db = Firebase.firestore
     val empalRef = db.collection("Empalme")
@@ -66,19 +69,6 @@ class MainActivity : AppCompatActivity() {
         changeFormRegistro()
 
     }
-
-    private fun llenarRecyclerView() {
-        binding.rcvEmpalme.layoutManager = LinearLayoutManager(this)
-        binding.rcvEmpalme.setHasFixedSize(true)
-
-        empalArrayList = arrayListOf()
-        adapterEmpal = AdapterEmpalme(empalArrayList)
-        binding.rcvEmpalme.adapter = adapterEmpal
-        // evenChangeListener()
-
-
-    }
-
     private fun evenChangeListener() {
 
         empalRef
@@ -133,13 +123,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    private fun updateEmpal(id_empalme:Empalme){
+
+    private fun updateEmpal() {
         val nombre = binding.edtnombre.text.toString().trim()
         val tramo = binding.edtTramo.text.toString().trim()
         val distan = binding.edtdistancia.text.toString().trim()
         val numposte = binding.edtposte.text.toString().trim()
         //actualizar datos
     }
+
     private fun consultasSimples() {
         val empalmeRef = db.collection("Empalme")
         val query = empalmeRef.whereEqualTo("nombre", "E#1")
@@ -174,14 +166,32 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-    private fun mostrarBtn(v:Boolean):Boolean{
-        if (v){
+
+    private fun mostrarBtn(v: Boolean): Boolean {
+        if (v) {
             binding.btnguardar.visibility = View.VISIBLE
             binding.btnActualizar.visibility = View.GONE
-        }else{
+        } else {
             binding.btnguardar.visibility = View.GONE
             binding.btnActualizar.visibility = View.VISIBLE
         }
         return v
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("SALIR")
+            .setMessage("Salir de la Aplicacion?")
+            .setPositiveButton("SI" ){ _, _ ->
+                finish()
+            }
+            .setNegativeButton("CANCELAR"){ _, _ ->
+                Toast.makeText(this,"Cancelar",Toast.LENGTH_SHORT).show()
+            }
+            .create()
+
+        dialog.show()
+
+        return super.onKeyDown(keyCode, event)
     }
 }
